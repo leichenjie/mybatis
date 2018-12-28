@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN" "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+
+    <!-- 引用db.properties配置文件 -->
+    <properties resource="db.properties"/>
+
+    <typeAliases>
+        <package name="com.leicj.domain"></package>
+    </typeAliases>
+
+    <environments default="development">
+        <environment id="development">
+            <transactionManager type="JDBC"/>
+            <!-- 配置数据库连接信息 -->
+            <dataSource type="POOLED">
+                <property name="driver" value="${driver}"/>
+                <property name="url" value="${url}"/>
+                <property name="username" value="${username}"/>
+                <property name="password" value="${password}"/>
+            </dataSource>
+        </environment>
+    </environments>
+
+    <mappers>
+        <!-- 注册userMapper.xml文件，
+   UserMapperI.xml位于com.leicj.mapping这个包下，所以resource写成com/leicj/mapping/UserMapperI.xml-->
+        <mapper resource="com/leicj/mapping/userMapper.xml"/>
+        <mapper class="com.leicj.mapping.UserMapperI"/>
+        <mapper resource="com/leicj/mapping/orderMapper.xml"/>
+        <mapper resource="com/leicj/mapping/classMapper.xml"/>
+        <mapper resource="com/leicj/mapping/p_userMapper.xml"/>
+    </mappers>
+
+</configuration>
